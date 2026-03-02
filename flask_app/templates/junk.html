@@ -1,0 +1,53 @@
+    <!-- bom table -->
+    <table class="table table-bordered table-striped table-hover bg-white">
+      <thead class="table-secondary">
+        <tr>
+          <th>Edit</th>
+          <th>Tag #</th>
+          <th>Process Description</th>
+          <th>Control Panel</th>
+          <th>Option</th>
+          <th>Manufacturer</th>
+          <th>Model Number</th>
+          <th>Qty</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tag in tags %}
+        <tr data-id="opt{{ tag.id }}">
+          <td><a href="/edit_tag/{{tag.id}}" class="btn btn-secondary btn-sm py-0">View/Edit</a></td>
+          <td>{{tag.type}}-{{tag.tag_number}}</td>
+          <td>{{tag.p_desc}}</td>
+          <td>{{tag.control_panel}}</td>
+          <td>
+            <span class="toggle me-1" onclick="toggleRows('opt{{ tag.id }}', this)">▶</span>{{tag.desc}}
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        {% for dev in tag.devices %}
+        <tr data-parent="opt{{ tag.id }}" class="d-none">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{ dev.man }}</td>
+          <td class="ps-4">↳ {{ dev.mod_num }}</td>
+          <td class="text-end">{{ dev.qty }}</td>
+        </tr>
+        {% endfor %}
+        {% endfor%}
+      </tbody>
+    </table>
+          <!-- Other -->               <td></td>
+          <!-- Electrical Connection --><td></td>
+          <!-- Range Min -->           <td></td>
+          <!-- Range Max -->           <td></td>
+          <!-- Range Unit -->          <td></td>
+          <!-- Field Wires -->         <td></td>
+          <!-- Controls Connection --> <td></td>
+          <!-- Hp -->                  <td></td>
+          <!-- Deviation -->           <td></td>
+    

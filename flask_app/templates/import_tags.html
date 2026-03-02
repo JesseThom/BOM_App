@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Dahmes BOM</title>
+
+</head>
+
+<body>
+
+  <nav class="navbar bg-body-tertiary" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/static/imgs/dahmes.png" alt="dahmes" height="70">
+      </a>
+      <div>
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-Link me-3" href="/">Home</a>
+            <a class="nav-Link-active me-3" href="/controls/{{job.id}}">Controls</a>
+            <a class="nav-Link me-3" href="/process/{{job.id}}">Process</a>
+            <a class="nav-Link" href="/design/{{job.id}}">Purchasing</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<!-- <div class="container mt-4">
+  <h3>Import Tags for {{ job.job_number }}</h3>
+
+  <form method="POST" action="/job/{{ job.id }}/import_tags">
+    <label class="fw-bold">Paste AutoCAD Export</label>
+    <textarea name="raw_text" class="form-control" rows="12"
+      placeholder="Paste AutoCAD export here..."></textarea>
+
+    <button class="btn btn-success mt-3">Import Tags</button>
+    <a href="/job/{{ job.id }}" class="btn btn-secondary mt-3">Cancel</a>
+  </form>
+</div> -->
+
+<div class="container mt-4">
+  <h3>Import Tags for Job {{ job.job_number }}</h3>
+
+  <form method="POST"
+        action="/job/{{ job.id }}/import_tags"
+        enctype="multipart/form-data">
+
+    <label class="fw-bold">Select AutoCAD Export (.txt)</label>
+    <input type="file"
+           name="acad_file"
+           accept=".txt"
+           class="form-control"
+           required>
+
+    <button class="btn btn-success mt-3">Import Tags</button>
+    <a href="/job/{{ job.id }}/exports" class="btn btn-secondary mt-3">Cancel</a>
+  </form>
+</div>
+

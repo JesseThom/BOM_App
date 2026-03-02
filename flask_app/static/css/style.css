@@ -1,0 +1,33 @@
+.nav-Link{
+    text-decoration: none;
+    color: white;
+}
+
+.nav-Link-active{
+    color:#01a19a;
+    font-size: large;
+}
+
+.job-card:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    transition: 0.15s ease-in-out;
+}
+
+.Container{
+    width: 95%;
+}
+
+.err-msg{
+    color: red;
+}
+
+.io{
+    width: 4rem;
+}
+
+.truncate{
+    max-width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
